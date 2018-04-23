@@ -114,3 +114,8 @@ venv.bak/
 
 
 # End of https://www.gitignore.io/api/python,django
+
+
+#SUBLIME WORKSPACE
+MallInOneProject.sublime-project
+MallInOneProject.sublime-workspace
