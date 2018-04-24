@@ -7,7 +7,7 @@ from local.models import Local
 # Create your models here.
 class Mall(models.Model):
   name       = models.CharField(max_length=120)
-  local      = models.ManyToManyField(Local)
+  local      = models.ForeignKey(Local)
 
   def __unicode__(self):
     return self.name
