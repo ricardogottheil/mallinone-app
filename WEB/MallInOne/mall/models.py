@@ -7,7 +7,10 @@ from local.models import Local
 # Create your models here.
 class Mall(models.Model):
   name       = models.CharField(max_length=120)
-  local      = models.ForeignKey(Local, null=True)
+  local      = models.ManyToManyField(Local)
 
-  def __str__(self):
+  def __unicode__(self):
     return self.name
+
+  class Meta:
+    ordering = ('name',)

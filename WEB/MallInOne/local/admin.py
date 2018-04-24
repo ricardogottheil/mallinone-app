@@ -6,4 +6,10 @@ from django.contrib import admin
 # Register your models here.
 from .models import Local
 
-admin.site.register(Local)
+@admin.register(Local)
+class LocalAdmin(admin.ModelAdmin):
+    list_display=('name',)
+    list_display_links= ('name',)
+    empty_value_display = '-????-'
+
+# admin.site.register(Local)
