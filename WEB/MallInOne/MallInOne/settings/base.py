@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = 'j&9u&6c9v4ezyj=p(#*8lgpz-vpv*ck15c5e+tys$wvn%q@9@m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mall',
     'local',
     'product',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FREAMEWORK = {
+    'PAGE_SIZE': 10,
+
+    'DEFAULT_RENDERER_CLASSES': (  'rest_framework.renderers.JSONRenderer','rest_framework.renderers.BrowsableAPIRenderer',     )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

@@ -21,12 +21,19 @@ username: admin
 password: superuser
 
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib import admin
+from rest_framework.authtoken import views
 
 from mall.views import index
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'^api/v1/auth', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/v1/', include('local.urls', namespace='local')),
+    url(r'^api/v1/', include('mall.urls', namespace='mall')),
+    url(r'^api/v1/', include('product.urls', namespace='product')),
 ]
