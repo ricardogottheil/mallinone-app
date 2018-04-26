@@ -25,7 +25,7 @@ SECRET_KEY = 'j&9u&6c9v4ezyj=p(#*8lgpz-vpv*ck15c5e+tys$wvn%q@9@m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mall',
-    'local',
-    'product',
+    'mall.apps.MallConfig',
+    'local.apps.LocalConfig',
+    'product.apps.ProductConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FREAMEWORK = {
+    'PAGE_SIZE': 10,
+
+    'DEFAULT_RENDERER_CLASSES': (  'rest_framework.renderers.JSONRenderer','rest_framework.renderers.BrowsableAPIRenderer',     )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -115,6 +121,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Django REST Framework
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS':
+    'rest_framework.pagination.PageNumberPagination',
+}
+
 
 
 # Static files (CSS, JavaScript, Images)

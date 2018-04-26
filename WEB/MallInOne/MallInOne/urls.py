@@ -1,32 +1,23 @@
-"""MallInOne URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
-
-"""
-Para ingresar al administrador de django usar...
-
-username: admin
-password: superuser
-
-"""
-from django.conf.urls import url
+from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib import admin
+from rest_framework.authtoken import views
+from rest_framework.schemas import get_schema_view
+from rest_framework.documentation import include_docs_urls
 
 from mall.views import index
+
+API_TITLE = 'MallinOne API'
+API_DESCRIPTION = 'Web API by MallinOne'
+schema_view = get_schema_view(title=API_TITLE)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'^api/v1/auth', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/v1/', include('local.urls', namespace='local')),
+    url(r'^api/v1/', include('mall.urls', namespace='mall')),
+    url(r'^api/v1/', include('product.urls', namespace='product')),
+    url(r'^schema/$', schema_view)
+    #url(r'^docs/', include_docs_urls(title='MallinOne API', description='Web API by MallinOne'))
 ]
