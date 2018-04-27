@@ -11,12 +11,12 @@ class LocalSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Local
-        fields = ('id', 'name', 'owner', 'highlight') #'product'
+        fields = ('name',"product", 'owner', 'highlight')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     local = serializers.HyperlinkedRelatedField(
-        many=True, view_name='local-detail', read_only=True)
+        many=True, view_name='UserViewSet', read_only=True)
 
     class Meta:
         model = User

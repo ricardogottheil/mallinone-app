@@ -9,12 +9,12 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = Product
-		fields = ('id', 'name', 'price', 'brand', 'characteristics', 'owner', 'highlight')
+		fields = ('name', 'price', 'brand', 'characteristics', 'owner', 'highlight')
 		
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     product = serializers.HyperlinkedRelatedField(
-        many=True, view_name='product-detail', read_only=True)
+        many=True, view_name='UserViewSet', read_only=True)
 
     class Meta:
         model = User
