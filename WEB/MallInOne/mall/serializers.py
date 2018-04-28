@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 from .models import Mall
 
-class MallSerializer(serializers.HyperlinkedModelSerializer):
+class MallSerializer(serializers.ModelSerializer): #HyperlinkedModelSerializer
     owner = serializers.ReadOnlyField(source='owner.username')
     highlight = serializers.HyperlinkedIdentityField(
         view_name='mall:mall-highlight', format='html')

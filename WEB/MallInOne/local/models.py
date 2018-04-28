@@ -8,7 +8,7 @@ from product.models import Product
 class Local(models.Model):
   id         = models.IntegerField(primary_key=True, default=0)
   name       = models.CharField(max_length=120)
-  product    = models.ManyToManyField(Product, related_name='%(class)s_Local', blank=True, null=True)
+  product    = models.ManyToManyField(Product, related_name='%(class)s_Local')
   owner = models.ForeignKey('auth.User', related_name='%(class)s_Local', on_delete=models.CASCADE, default='')
   highlighted = models.TextField(default='')
 
