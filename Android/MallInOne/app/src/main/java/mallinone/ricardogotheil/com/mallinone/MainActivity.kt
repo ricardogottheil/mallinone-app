@@ -14,7 +14,16 @@ class MainActivity : AppCompatActivity() {
         buttonGoogleMaps.setOnClickListener {
             val mapa = Intent(this, MapsActivity::class.java)
             startActivity(mapa)
+        }
 
+        buttonMalls.setOnClickListener {
+            val malls = Intent(this, MallsActivity::class.java)
+            startActivity(malls)
+        }
+
+        buttonSearchs.setOnClickListener {
+            val searchs = Intent(this, SearchesActivity::class.java)
+            startActivity(searchs)
         }
     }
 }
