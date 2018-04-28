@@ -8,10 +8,8 @@ from product.models import Product
 class Local(models.Model):
   id         = models.IntegerField(primary_key=True, default=0)
   name       = models.CharField(max_length=120)
-  product    = models.ManyToManyField(Product)
-  #mall    = models.ForeignKey(Mall, related_name='%(class)s_local', parent_link=True)
-  owner = models.ForeignKey(
-  	'auth.User', related_name='local', on_delete=models.CASCADE, default='')
+  product    = models.ManyToManyField(Product, related_name='%(class)s_Local', blank=True, null=True)
+  owner = models.ForeignKey('auth.User', related_name='%(class)s_Local', on_delete=models.CASCADE, default='')
   highlighted = models.TextField(default='')
 
   def __unicode__(self):

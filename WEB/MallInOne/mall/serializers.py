@@ -6,7 +6,7 @@ from .models import Mall
 class MallSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     highlight = serializers.HyperlinkedIdentityField(
-        view_name='mall-highlight', format='html')
+        view_name='mall:mall-highlight', format='html')
 
     class Meta:
         model = Mall
@@ -14,7 +14,7 @@ class MallSerializer(serializers.HyperlinkedModelSerializer):
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     local = serializers.HyperlinkedRelatedField(
-        many=True, view_name='mall-detail', read_only=True)
+        many=True, view_name='UserViewSet', read_only=True)
 
     class Meta:
         model = User

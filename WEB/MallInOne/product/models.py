@@ -9,9 +9,11 @@ class Product(models.Model):
   price              = models.CharField(max_length=120, null=True, blank=True)
   brand              = models.CharField(max_length=120, null=True, blank=True)
   characteristics    = models.TextField(null=True, blank=True)
-  owner              = models.ForeignKey('auth.User', related_name='product', on_delete=models.CASCADE, default='')
+  owner              = models.ForeignKey('auth.User', related_name='%(class)s_Product', on_delete=models.CASCADE, default='')
   highlighted        = models.TextField(default='')
-  
 
   def __unicode__(self):
     return self.name
+
+  class Meta:
+  	ordering =('name',)
