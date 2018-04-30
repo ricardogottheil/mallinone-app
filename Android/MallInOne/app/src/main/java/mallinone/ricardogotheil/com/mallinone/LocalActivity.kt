@@ -1,28 +1,33 @@
 package mallinone.ricardogotheil.com.mallinone
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import com.google.android.gms.common.api.PendingResults
 import com.google.gson.GsonBuilder
-import kotlinx.android.synthetic.main.activity_malls.*
+import kotlinx.android.synthetic.main.activity_local.*
 import okhttp3.*
 import java.io.IOException
 
-class MallsActivity : AppCompatActivity() {
+class LocalActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_malls)
+        setContentView(R.layout.activity_local)
 
-        recyclerView_main.layoutManager = LinearLayoutManager(this)
+        recyclerView_main2.layoutManager = LinearLayoutManager(this)
         //recyclerView_main.adapter = MallAdapter()
+
+        button_mallMap.setOnClickListener {
+            val mapa = Intent(this, MapsActivity::class.java)
+            startActivity(mapa)
+        }
 
         fetchJson()
     }
 
     fun fetchJson() {
-        val url = "http://mallinone.tk/api/v1/mall/?format=json"
+        val url = "http://mallinone.tk/api/v1/local/?format=json"
 
         val request = Request.Builder().url(url).build()
 
@@ -34,10 +39,10 @@ class MallsActivity : AppCompatActivity() {
 
                 val gson = GsonBuilder().create()
 
-                val homeFeed = gson.fromJson(body, HomeFeed::class.java)
+                val homeFeed = gson.fromJson(body, HomeFeed2::class.java)
 
                 runOnUiThread {
-                    recyclerView_main.adapter = MallAdapter(homeFeed, applicationContext)
+                    recyclerView_main2.adapter = LocalAdapter(homeFeed, applicationContext)
                 }
             }
 
@@ -50,4 +55,5 @@ class MallsActivity : AppCompatActivity() {
 
 }
 
-class HomeFeed(val results: List<Mall>)
+class HomeFeed2(val results: List<Local>)
+

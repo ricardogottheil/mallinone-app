@@ -59,19 +59,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         mMap.uiSettings.isZoomControlsEnabled = true
 
         setUpMap()
+
+        val elTesoro = LatLng(6.197578994192375, -75.55768847465515)
+        mMap.addMarker(MarkerOptions().position(elTesoro).title("El Tesoro, Parque Comercial"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(elTesoro))
     }
 
     private fun placeMarker(location: LatLng) {
         val markerOption = MarkerOptions().position(location)
         markerOption.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
-        mMap.addMarker(markerOption)
+        //mMap.addMarker(markerOption)
     }
 
     private fun setUpMap() {
         if (ActivityCompat.checkSelfPermission(this,
-        android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
-            arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
             return
         }
 

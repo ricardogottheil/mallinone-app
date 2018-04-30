@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="137dp">
 
         <ImageView
             android:id="@+id/imageView"
@@ -21,6 +21,12 @@
             android:layout_marginTop="15dp"
             android:contentDescription="@android:string/ok"
             android:src="@drawable/logo_mallinone" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
