@@ -9,6 +9,9 @@ class Mall(models.Model):
   owner = models.ForeignKey(
   	'auth.User', related_name='mall', on_delete=models.CASCADE, default='')
   highlighted = models.TextField(default='')
+  image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, default='')
+  latitude = models.IntegerField(default=0)
+  longitude = models.IntegerField(default=0)
 
   def __unicode__(self):
     return self.name

@@ -11,6 +11,7 @@ class Product(models.Model):
   characteristics    = models.TextField(null=True, blank=True)
   owner              = models.ForeignKey('auth.User', related_name='%(class)s_Product', on_delete=models.CASCADE, default='')
   highlighted        = models.TextField(default='')
+  image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, default='')
 
   def __unicode__(self):
     return self.name

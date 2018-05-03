@@ -3,14 +3,14 @@ from rest_framework import serializers
 
 from local.models import Local
 
-class LocalSerializer(serializers.ModelSerializer): #HyperlinkedModelSerializer
+class LocalSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     highlight = serializers.HyperlinkedIdentityField(
         view_name='local:local-highlight', format='html')
 
     class Meta:
         model = Local
-        fields = ('name',"product", 'owner', 'highlight')
+        fields = ('name', 'image', 'product', 'latitude', 'longitude', 'owner', 'highlight')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     local = serializers.HyperlinkedRelatedField(

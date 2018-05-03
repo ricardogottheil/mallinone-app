@@ -10,7 +10,7 @@ class MallSerializer(serializers.ModelSerializer): #HyperlinkedModelSerializer
 
     class Meta:
         model = Mall
-        fields = ('name', 'local', 'owner', 'highlight') 
+        fields = ('name', 'local', 'latitude', 'longitude', 'owner', 'highlight', 'image') 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     local = serializers.HyperlinkedRelatedField(
