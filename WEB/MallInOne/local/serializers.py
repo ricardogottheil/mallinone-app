@@ -10,7 +10,7 @@ class LocalSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Local
-        fields = ('name', 'image', 'product', 'latitude', 'longitude', 'owner', 'highlight')
+        fields = ('name', 'mall', 'owner', 'image', 'map_url', 'highlight')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     local = serializers.HyperlinkedRelatedField(
