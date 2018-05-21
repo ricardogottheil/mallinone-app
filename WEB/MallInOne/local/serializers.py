@@ -5,12 +5,10 @@ from local.models import Local
 
 class LocalSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    highlight = serializers.HyperlinkedIdentityField(
-        view_name='local:local-highlight', format='html')
 
     class Meta:
         model = Local
-        fields = ('name', 'mall', 'owner', 'image', 'map_url', 'highlight')
+        fields = ('name', 'mall', 'owner', 'image', 'map_url', 'highlighted')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     local = serializers.HyperlinkedRelatedField(

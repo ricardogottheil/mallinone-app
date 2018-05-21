@@ -5,11 +5,10 @@ from rest_framework import serializers
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
 	owner = serializers.ReadOnlyField(source='owner.username')
-	highlight = serializers.HyperlinkedIdentityField(view_name='product:product-highlight', format='html')
 
 	class Meta:
 		model = Product
-		fields = ('name', 'price', 'brand', 'characteristics', 'owner', 'highlight', 'image')
+		fields = ('name', 'price', 'brand', 'characteristics', 'owner', 'highlighted', 'image')
 		
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     product = serializers.HyperlinkedRelatedField(
