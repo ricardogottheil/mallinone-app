@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mall.apps.MallConfig',
-    'local.apps.LocalConfig',
-    'product.apps.ProductConfig',
     'rest_framework',
+    'mall',
+    'local',
+    'product',
 ]
 
 MIDDLEWARE = [
@@ -103,11 +103,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-REST_FREAMEWORK = {
-    'PAGE_SIZE': 10,
+# REST_FREAMEWORK = {
+#     'PAGE_SIZE': 10,
 
-    'DEFAULT_RENDERER_CLASSES': (  'rest_framework.renderers.JSONRenderer','rest_framework.renderers.BrowsableAPIRenderer',     )
-}
+#     'DEFAULT_RENDERER_CLASSES': (  'rest_framework.renderers.JSONRenderer','rest_framework.renderers.BrowsableAPIRenderer',     )
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -123,11 +123,11 @@ USE_L10N = True
 USE_TZ = True
 
 # Django REST Framework
-REST_FRAMEWORK = {
-    'PAGE_SIZE': 10,
-    'DEFAULT_PAGINATION_CLASS':
-    'rest_framework.pagination.PageNumberPagination',
-}
+# REST_FRAMEWORK = {
+#     'PAGE_SIZE': 10,
+#     'DEFAULT_PAGINATION_CLASS':
+#     'rest_framework.pagination.PageNumberPagination',
+# }
 
 
 
