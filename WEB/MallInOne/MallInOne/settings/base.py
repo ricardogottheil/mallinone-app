@@ -103,11 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# REST_FREAMEWORK = {
-#     'PAGE_SIZE': 10,
 
-#     'DEFAULT_RENDERER_CLASSES': (  'rest_framework.renderers.JSONRenderer','rest_framework.renderers.BrowsableAPIRenderer',     )
-# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -135,3 +131,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
